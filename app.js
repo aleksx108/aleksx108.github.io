@@ -53,7 +53,6 @@ function getValues(){
 
       system = [test1,test2,test3];
       getAnswers(system[0].a11,system[0].a12,system[0].a13,system[0].b1,system[1].a21,system[1].a22,system[1].a23,system[1].b2,system[2].a31,system[2].a32,system[2].a33,system[2].b3);
-      show();
 
 
 }
@@ -242,6 +241,7 @@ function getAnswers(a11,a12,a13,b1,a21,a22,a23,b2,a31,a32,a33,b3) {
       document.getElementById('a23_starp_3').innerHTML = a33;
       document.getElementById('b2_starp_3').innerHTML = b3;
 
+        document.getElementById('a11_starp_3').innerHTML = a11;
 
       var multiplier3 = a32 * -1;
       system[2].a32 = a32 = a22 * multiplier3 + a32;
@@ -250,7 +250,7 @@ function getAnswers(a11,a12,a13,b1,a21,a22,a23,b2,a31,a32,a33,b3) {
 
       var a22_s = a22 * multiplier3;
       var a23_s = a23 * multiplier3;
-      var  b2_s = b2 * multiplier3;
+      var  b2_s =  b2 * multiplier3;
 
       document.getElementById('a12_starp_3').innerHTML = a22_s;
       document.getElementById('a13_starp_3').innerHTML = a23_s;
