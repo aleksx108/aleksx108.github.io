@@ -1,0 +1,104 @@
+var system = [
+{ a11: 2.5000, a12: -3.1200, a13: -4.0300, b1: -7.5000},
+{ a21: 0.6100, a22:  0.7100, a23: -0.0500, b2:  0.4400},
+{ a31:-1.0300, a32: -2.0500, a33:  0.8770, b3: -1.1600}
+];
+
+// var system = [
+// { a11: 3, a12:-6, a13: 3, b1:-12},
+// { a21: 2, a22: 3, a23: 4, b2:  8},
+// { a31: 4, a32: 5, a33:-2, b3:  4}
+// ];
+
+var names = [];
+function getValues(){
+  var inputs = document.getElementsByClassName('system-value'),
+      names  = [].map.call(inputs, function( input ) {
+          return input.value;
+      });
+  console.log(names);
+}
+
+// for (var i = 0; i < array.length; i++) {
+//   array[i]
+// }
+
+
+
+var clonedSystem = JSON.parse(JSON.stringify(system));
+function firstStep(a11,a12,a13,b1,a21,a22,a23,b2,a31,a32,a33,b3) {
+      // 1)
+      var divider = a11;
+      system[0].a11 = a11 = a11/divider;
+      system[0].a12 = a12 = a12/divider;
+      system[0].a13 = a13 = a13/divider;
+      system[0].b1  =  b1 = b1/divider;
+      console.log("Pirmas darbibas rezultats")
+      console.log(a11,a12,a13,b1);
+      // 2)
+      var multiplier1 = a21 * -1;
+      system[1].a21 = a21 = a11 * multiplier1 + a21;
+      system[1].a22 = a22 = a12 * multiplier1 + a22;
+      system[1].a23 = a23 = a13 * multiplier1 + a23;
+      system[1].b2  =  b2 =  b1 * multiplier1 +  b2;
+
+      var multiplier2 = a31 * -1;
+      system[2].a31 = a31 = a11 * multiplier2 + a31;
+      system[2].a32 = a32 = a12 * multiplier2 + a32;
+      system[2].a33 = a33 = a13 * multiplier2 + a33;
+      system[2].b3  =  b3 =  b1 * multiplier2 +  b3;
+
+      console.log("Otras darbibas rezultats")
+      console.log(a21,a22,a23,b2,"un",a31,a32,a33,b3)
+      // 3)
+      var divider2 = a22 ;
+      system[1].a22 = a22 = a22 / divider2;
+      system[1].a23 = a23 = a23 / divider2;
+      system[1].b2  =  b2 =  b2 / divider2;
+      console.log("Tresas darbibas rezultats")
+      console.log(a21,a22,a23,b2);
+      // 4)
+      var multiplier3 = a32 * -1;
+      system[2].a32 = a32 = a22 * multiplier3 + a32;
+      system[2].a33 = a33 = a23 * multiplier3 + a33;
+       system[2].b3 =  b3 =  b2 * multiplier3 +  b3;
+      console.log("Ceturtas darbibas rezultats")
+      console.log(a32,a33,b3);
+      // 5)
+      var divider3 = a33;
+      system[2].a33 = a33 = a33 / divider3;
+      system[2].b3  =  b3 = b3  / divider3;
+      console.log("Piektas darbibas rezultats")
+      console.log(a33,b3);
+      // 6
+      var z = (b3);
+      var y = (b2 +(a23*z*-1));
+      var x = (b1 + (a12*y*-1)+(a13*z*-1));
+
+      console.log("y=",y);
+      console.log("x=",x);
+      console.log("z=",z);
+      console.log(system);
+      // 7) Parbaude:
+      var  firstEquation = ((clonedSystem[0].a11*x)+(clonedSystem[0].a12*y)+(clonedSystem[0].a13*z));
+      var secondEquation = ((clonedSystem[1].a21*x)+(clonedSystem[1].a22*y)+(clonedSystem[1].a23*z));
+      var  thirdEquation = ((clonedSystem[2].a31*x)+(clonedSystem[2].a32*y)+(clonedSystem[2].a33*z));
+
+      if(firstEquation==clonedSystem[0].b1){
+        console.log(firstEquation,  '=', clonedSystem[0].b1,'=> vienadojums ir pareizs');
+      }else{
+        console.log(firstEquation,  '=', clonedSystem[0].b1,'=> vienadojums ir nepareizs');
+      }
+      if (secondEquation==clonedSystem[1].b2){
+        console.log(secondEquation, '=', clonedSystem[1].b2,'=> vienadojums ir pareizs');
+      }else{
+        console.log(secondEquation, '=', clonedSystem[1].b2,'=> vienadojums ir nepareizs');
+      }
+      if (thirdEquation==clonedSystem[2].b3){
+        console.log(thirdEquation,  '=', clonedSystem[2].b3,'=> vienadojums ir pareizs');
+      }else{
+        console.log(thirdEquation,  '=', clonedSystem[2].b3,'=> vienadojums ir nepareizs');
+      }
+};
+
+firstStep(system[0].a11,system[0].a12,system[0].a13,system[0].b1,system[1].a21,system[1].a22,system[1].a23,system[1].b2,system[2].a31,system[2].a32,system[2].a33,system[2].b3);

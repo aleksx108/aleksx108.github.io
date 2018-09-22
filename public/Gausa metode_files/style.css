@@ -1,0 +1,65 @@
+#title{
+  margin-top: 200px;
+}
+
+table {
+border: 1px solid #ddd;
+border-collapse: separate;
+border-left: 0;
+border-radius: 10px;
+border-spacing: 0px;
+}
+
+tr {
+display: table-row;
+vertical-align: inherit;
+border-color: inherit;
+}
+th, td {
+padding: 5px 4px 6px 4px;
+text-align: left;
+vertical-align: top;
+border-left: 1px solid #ddd;
+}
+td {
+border-top: 1px solid #ddd;
+padding: 0;
+}
+thead:first-child tr:first-child th:first-child, tbody:first-child tr:first-child td:first-child {
+border-radius: 10px 0 0 0;
+}
+thead:last-child tr:last-child th:first-child, tbody:last-child tr:last-child td:first-child {
+border-radius: 0 0 0 10px;
+}
+#coefficient{
+  padding-left:10px;
+  text-align:center;
+  margin-right: 25px;
+}
+#letter , #equal{
+  font-weight: bolder;
+  font-size: 1.5em;
+}
+input{
+  margin-right: 20px;
+}
+
+.equal-sign{
+ margin-right: 20px;
+ font-weight: bold;
+ color: #979899;
+ font-size: 1.5em;
+}
+
+input[type="number"] {
+  text-align: center;
+}
+#bracket-img{
+  margin-right: 20px;
+}
+#system-form{
+  margin-top:40px;
+}
+#system-submit-button{
+  margin-top: 20px;
+}
